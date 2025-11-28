@@ -1,1 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Karthik K • Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
 
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1120;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.1);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #020617;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+      --radius-xl: 1.25rem;
+      --radius-lg: 0.9rem;
+      --radius-pill: 999px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1f2937 0, #020617 40%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Layout */
+    .page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.92),
+        rgba(2, 6, 23, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: conic-gradient(
+        from 140deg,
+        #4f46e5,
+        #06b6d4,
+        #22c55e,
+        #eab308,
+        #f97316,
+        #ec4899,
+        #4f46e5
+      );
+      padding: 2px;
+      box-shadow: 0 0 24px rgba(129, 140, 248, 0.7);
+    }
+
+    .logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 0, #1f2937, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+
+    .nav-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .nav-title-main {
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-title-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 150ms ease-out;
+      cursor: pointer;
+    }
+
+    .nav-links a span {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .nav-links a.active {
+      color: #f9fafb;
+      background: radial-gradient(circle at top, #4f46e5, #1e293b);
+      border-color: rgba(129, 140, 248, 0.7);
+      box-shadow: 0 8px 18px rgba(79, 70, 229, 0.4);
+    }
+
+    .nav-cta {
+      padding: 0.4rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 140, 248, 0.8);
+      color: #e5e7eb;
+      background: linear-gradient(120deg, #4f46e5, #06b6d4);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.5);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      outline: none;
+      transition: transform 120ms ease-out, box-shadow 120ms ease-out,
+        filter 120ms ease-out;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.7);
+    }
+
+    .nav-cta:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.5);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .section-pill {
+      padding: 0.15rem 0.7rem;
+      font-size: 0.72rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1.1rem;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 140, 248, 0.55);
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 0.75rem;
+      color: #c7d2fe;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      line-height: 1.08;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #4f46e5, #22c55e, #eab308);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 34rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.2rem;
+    }
+
+    .hero-badge {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .hero-badge small {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.7rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: var(--radius-pill);
+      padding: 0.55rem 1.25rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      outline: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform 120ms ease-out, box-shadow 120ms ease-out,
+        background-color 120ms ease-out, border-color 120ms ease-out,
+        color 120ms ease-out;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top, #4f46e5, #0f172a);
+      border-color: rgba(129, 140, 248, 0.9);
+      color: #e5e7eb;
+      box-shadow: 0 14px 40px rgba(79, 70, 229, 0.6);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 48px rgba(79, 70, 229, 0.7);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.6);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.95);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.8rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+    }
+
+    .hero-meta-item span {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* Hero right */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 1.75rem;
+      padding: 1.6rem 1.5rem 1.5rem;
+      background: radial-gradient(circle at 0 0, #1d2537 0, #020617 45%, #000 100%);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-soft);
+      width: 100%;
+      max-width: 340px;
+      overflow: hidden;
+    }
+
+    .hero-card-gradient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(129, 140, 248, 0.6), transparent),
+        radial-gradient(circle at 60% 120%, rgba(34, 197, 94, 0.55), transparent),
+        radial-gradient(circle at -10% 80%, rgba(14, 165, 233, 0.6), transparent);
+      opacity: 0.4;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      z-index: 1;
+    }
+
+    .avatar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 1.5rem;
+      padding: 2px;
+      background: conic-gradient(
+        from 220deg,
+        #22c55e,
+        #06b6d4,
+        #4f46e5,
+        #ec4899,
+        #22c55e
+      );
+      box-shadow: 0 0 24px rgba(59, 130, 246, 0.7);
+    }
+
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 0, #111827, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      letter-spacing: 0.08em;
+    }
+
+    .avatar-meta-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .avatar-meta-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    .avatar-meta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.72rem;
+      color: #c7d2fe;
+    }
+
+    .avatar-meta-tag span {
+      font-size: 0.9rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+    }
+
+    .hero-stat-card {
+      border-radius: 1rem;
+      padding: 0.55rem 0.6rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .hero-stat-label {
+      color: var(--muted);
+      font-size: 0.68rem;
+    }
+
+    .hero-stat-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .hero-stat-value span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 0.15rem;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .hero-chip {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.98);
+      color: #e5e7eb;
+    }
+
+    .hero-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .hero-footer-pill {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      white-space: nowrap;
+    }
+
+    .hero-footer-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      white-space: nowrap;
+    }
+
+    .hero-footer-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: -36px;
+      opacity: 0.15;
+      border-radius: inherit;
+      border: 1px dashed rgba(148, 163, 184, 0.4);
+      pointer-events: none;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 1.75rem;
+    }
+
+    .card {
+      border-radius: var(--radius-xl);
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.25rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+    }
+
+    .card-heading {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .about-body {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .about-body p + p {
+      margin-top: 0.8rem;
+    }
+
+    .about-meta-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.9rem;
+      font-size: 0.78rem;
+    }
+
+    .about-meta-item {
+      padding: 0.5rem 0.7rem;
+      border-radius: 0.8rem;
+      border: 1px dashed rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .about-meta-label {
+      color: var(--muted);
+      font-size: 0.74rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .about-meta-value {
+      font-size: 0.86rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #e5e7eb;
+      white-space: nowrap;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 1.6rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .pill {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.97);
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .pill small {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #4ade80;
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
+    }
+
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    .skill-item {
+      padding: 0.35rem 0.6rem;
+      border-radius: 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.97);
+      font-size: 0.8rem;
+    }
+
+    .skill-item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.2rem;
+    }
+
+    .skill-name {
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .skill-level {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .skill-bar {
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(31, 41, 55, 0.9);
+      overflow: hidden;
+      margin-top: 0.15rem;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #22c55e, #4f46e5);
+      width: 0;
+      transition: width 800ms ease-out;
+    }
+
+    /* Projects / Highlights */
+    .project-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 1.6rem;
+    }
+
+    .project-card {
+      border-radius: var(--radius-xl);
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid var(--border);
+      padding: 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+    }
+
+    .project-title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .project-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .project-desc {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .project-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.15rem;
+    }
+
+    .project-meta-pill {
+      font-size: 0.72rem;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: #e5e7eb;
+      white-space: nowrap;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .timeline-marker-wrap {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: #4f46e5;
+      border: 2px solid rgba(15, 23, 42, 1);
+      box-shadow: 0 0 16px rgba(79, 70, 229, 0.7);
+    }
+
+    .timeline-line {
+      flex: 1;
+      width: 2px;
+      background: linear-gradient(to bottom, #4f46e5, transparent);
+      opacity: 0.75;
+    }
+
+    .timeline-card {
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.8rem;
+    }
+
+    .timeline-title {
+      font-size: 0.86rem;
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-body {
+      font-size: 0.8rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* Certifications */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .cert-card {
+      padding: 0.75rem 0.75rem 0.8rem;
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.78rem;
+    }
+
+    .cert-title {
+      font-size: 0.83rem;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .cert-meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .cert-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .cert-tag {
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.98);
+      font-size: 0.7rem;
+      white-space: nowrap;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.4fr);
+      gap: 1.75rem;
+    }
+
+    .contact-highlight {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-highlight strong {
+      color: #e5e7eb;
+    }
+
+    .contact-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .contact-pill {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .contact-pill span {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .contact-meta-table {
+      margin-top: 0.35rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.5rem;
+      font-size: 0.82rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.7rem;
+      padding: 0.4rem 0.55rem;
+      border-radius: 0.75rem;
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .contact-row-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .contact-row-value {
+      font-size: 0.86rem;
+      text-align: right;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.8rem;
+    }
+
+    .form-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .form-label span {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    input,
+    textarea {
+      border-radius: 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 0.5rem 0.7rem;
+      font-size: 0.82rem;
+      color: var(--text);
+      outline: none;
+      resize: none;
+      min-height: 0;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(129, 140, 248, 0.95);
+      box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.8);
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 0.2rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .form-status {
+      min-height: 1em;
+    }
+
+    .btn-submit {
+      border-radius: var(--radius-pill);
+      padding: 0.5rem 1.1rem;
+      border: 1px solid rgba(129, 140, 248, 0.9);
+      background: linear-gradient(120deg, #4f46e5, #06b6d4);
+      color: #e5e7eb;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.7);
+      outline: none;
+      border-width: 1px;
+      transition: transform 120ms ease-out, box-shadow 120ms ease-out,
+        filter 120ms ease-out;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(37, 99, 235, 0.85);
+      filter: brightness(1.03);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.7);
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      margin-top: 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .footer-badge {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.3fr);
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .hero-card {
+        max-width: 420px;
+      }
+
+      .about-grid,
+      .skills-grid,
+      .project-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cert-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding-inline: 1rem;
+      }
+
+      .hero-card {
+        padding: 1.3rem 1.2rem 1.25rem;
+      }
+
+      .hero {
+        margin-top: 0.8rem;
+      }
+
+      .cert-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <nav class="nav">
+        <div class="nav-left">
+          <div class="logo-circle">
+            <div class="logo-inner">KK</div>
+          </div>
+          <div class="nav-title">
+            <div class="nav-title-main">Karthik&nbsp;K</div>
+            <div class="nav-title-sub">3rd Year CSE • Hassan</div>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#about" class="nav-link active">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#certifications" class="nav-link">Certifications</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <button class="nav-cta" type="button" onclick="scrollToSection('contact')">
+          <span>✉</span> Hire Me
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <!-- Hero -->
+        <section id="hero">
+          <div class="hero">
+            <div class="hero-main">
+              <div class="chip">
+                <span class="chip-dot"></span>
+                <span>Computer Science Student • Portfolio</span>
+              </div>
+              <h1 class="hero-title">
+                Hey, I'm <span>Karthik&nbsp;K</span> —
+                <br />
+                3rd Year CSE at Malnad College Hassan
+              </h1>
+              <p class="hero-subtitle">
+                I am a curious and hands-on Computer Science engineering student from
+                Malnad College of Engineering, Hassan. I enjoy turning ideas into
+                working web applications, writing clean code, and understanding how
+                systems work from front end to back end.
+              </p>
+              <div class="hero-badges">
+                <div class="hero-badge">
+                  <small>Branch</small>
+                  CSE • 3rd Year
+                </div>
+                <div class="hero-badge">
+                  <small>Focus</small>
+                  Full-Stack Web &amp; Problem Solving
+                </div>
+                <div class="hero-badge">
+                  <small>Location</small>
+                  Hassan, Karnataka
+                </div>
+              </div>
+              <div class="hero-actions">
+                <button class="btn-primary" type="button" onclick="scrollToSection('projects')">
+                  View My Projects <span>↗</span>
+                </button>
+                <button class="btn-ghost" type="button" onclick="scrollToSection('skills')">
+                  Explore Skills
+                </button>
+              </div>
+              <div class="hero-meta">
+                <div class="hero-meta-item">
+                  <span>💻</span> Practicing full-stack web development with HTML, CSS, JS, and basic backend.
+                </div>
+                <div class="hero-meta-item">
+                  <span>📚</span> Strengthening fundamentals in Data Structures, Algorithms, and DBMS.
+                </div>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <div class="hero-card">
+                <div class="hero-orbit"></div>
+                <div class="hero-card-gradient"></div>
+                <div class="hero-card-inner">
+                  <div class="avatar-row">
+                    <div class="avatar">
+                      <div class="avatar-inner">KK</div>
+                    </div>
+                    <div>
+                      <div class="avatar-meta-title">Karthik&nbsp;K</div>
+                      <div class="avatar-meta-sub">
+                        B.E. Computer Science • Malnad College of Engineering, Hassan
+                      </div>
+                      <div class="avatar-meta-tag">
+                        <span>🎓</span> 3rd Year • 2023-27 Batch
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hero-stats">
+                    <div class="hero-stat-card">
+                      <div class="hero-stat-label">Core CGPA (till 4th sem)</div>
+                      <div class="hero-stat-value">8.3<span>/10</span></div>
+                    </div>
+                    <div class="hero-stat-card">
+                      <div class="hero-stat-label">Mini Projects</div>
+                      <div class="hero-stat-value">5<span>completed</span></div>
+                    </div>
+                    <div class="hero-stat-card">
+                      <div class="hero-stat-label">Hackathons</div>
+                      <div class="hero-stat-value">3<span>participated</span></div>
+                    </div>
+                  </div>
+                  <div class="hero-chip-row">
+                    <div class="hero-chip">HTML • CSS • JavaScript</div>
+                    <div class="hero-chip">C • C++ • Java (Basics)</div>
+                    <div class="hero-chip">Git • GitHub • VS Code</div>
+                  </div>
+                  <div class="hero-footer">
+                    <div class="hero-footer-pill">
+                      Interested in: Web Dev, Problem Solving, and System Design Basics
+                    </div>
+                    <div class="hero-footer-status">
+                      <span class="hero-footer-status-dot"></span>
+                      Open to Internships
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+          <div class="section-header">
+            <div class="section-title">About</div>
+            <div class="section-kicker">Who I am beyond the code editor</div>
+            <div class="section-pill">Student • Developer • Learner</div>
+          </div>
+          <div class="about-grid">
+            <div class="card">
+              <div class="card-heading">Short story</div>
+              <div class="card-sub">
+                Passionate about building useful things with code and learning by doing.
+              </div>
+              <div class="about-body">
+                <p>
+                  I am Karthik&nbsp;K, a 3rd year Computer Science Engineering student at
+                  Malnad College of Engineering, Hassan. I enjoy understanding how technology
+                  works from the basics and then applying it to create clean and simple solutions.
+                </p>
+                <p>
+                  I like working on web applications, solving logical problems, and exploring
+                  development tools. When I get stuck, I patiently debug, read documentation,
+                  and learn from mistakes instead of giving up quickly.
+                </p>
+                <p>
+                  Outside academics, I participate in coding contests, tech clubs, and team
+                  projects where I get to collaborate, discuss ideas, and share knowledge
+                  with friends.
+                </p>
+              </div>
+              <div class="about-meta-list">
+                <div class="about-meta-item">
+                  <div class="about-meta-label">College</div>
+                  <div class="about-meta-value">
+                    Malnad College of Engineering, Hassan
+                  </div>
+                </div>
+                <div class="about-meta-item">
+                  <div class="about-meta-label">Degree &amp; Stream</div>
+                  <div class="about-meta-value">
+                    B.E. • Computer Science &amp; Engineering
+                  </div>
+                </div>
+                <div class="about-meta-item">
+                  <div class="about-meta-label">Year of Study</div>
+                  <div class="about-meta-value">3rd Year (2023-27)</div>
+                </div>
+                <div class="about-meta-item">
+                  <div class="about-meta-label">Current Focus</div>
+                  <div class="about-meta-value">Full-Stack Web &amp; DSA</div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-heading">Snapshot of me</div>
+              <div class="card-sub">
+                A few tags that describe my interests, mindset, and style of work.
+              </div>
+              <div class="tag-list">
+                <div class="tag">Curious Problem Solver</div>
+                <div class="tag">Self-Learner</div>
+                <div class="tag">Team Player</div>
+                <div class="tag">Clean Code Enthusiast</div>
+                <div class="tag">Tech Club Participant</div>
+                <div class="tag">Hackathon Explorer</div>
+                <div class="tag">Frontend &amp; Backend Basics</div>
+                <div class="tag">Git &amp; GitHub User</div>
+                <div class="tag">UI/UX Awareness</div>
+                <div class="tag">Time Management</div>
+                <div class="tag">Logical Thinking</div>
+                <div class="tag">Continuous Improvement</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+          <div class="section-header">
+            <div class="section-title">Skills</div>
+            <div class="section-kicker">
+              Technical, programming, and personal skills I actively use and improve.
+            </div>
+            <div class="section-pill">Always learning</div>
+          </div>
+          <div class="skills-grid">
+            <div class="card">
+              <div class="card-heading">Technical overview</div>
+              <div class="card-sub">
+                I focus on strong fundamentals and practical skills that help in real projects.
+              </div>
+              <div class="pill-row" style="margin-bottom: 0.75rem;">
+                <div class="pill">
+                  <span class="pill-dot"></span> Web Development
+                  <small>HTML • CSS • JS</small>
+                </div>
+                <div class="pill">
+                  <span class="pill-dot"></span> Programming
+                  <small>C • C++ • Java basics</small>
+                </div>
+                <div class="pill">
+                  <span class="pill-dot"></span> Databases
+                  <small>MySQL • SQL queries</small>
+                </div>
+                <div class="pill">
+                  <span class="pill-dot"></span> CS Fundamentals
+                  <small>DSA • OOP • OS • DBMS</small>
+                </div>
+              </div>
+              <div class="skill-groups">
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <div class="skill-name">HTML5 &amp; Semantic Layouts</div>
+                    <div class="skill-level">Advanced beginner</div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill" data-skill="82"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <div class="skill-name">CSS3 (Flexbox, Grid, Responsive)</div>
+                    <div class="skill-level">Intermediate</div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill" data-skill="76"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <div class="skill-name">JavaScript (ES6 Basics)</div>
+                    <div class="skill-level">Intermediate</div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill" data-skill="72"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <div class="skill-name">C &amp; C++ Programming</div>
+                    <div class="skill-level">Strong fundamentals</div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill" data-skill="80"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <div class="skill-name">OOP &amp; Java Basics</div>
+                    <div class="skill-level">Intermediate</div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill" data-skill="70"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <div class="skill-name">MySQL &amp; Relational DB</div>
+                    <div class="skill-level">Comfortable</div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill" data-skill="74"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <div class="skill-name">Git, GitHub &amp; Version Control</div>
+                    <div class="skill-level">Practical usage</div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill" data-skill="68"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <div class="skill-name">Problem Solving &amp; DSA</div>
+                    <div class="skill-level">Improving regularly</div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill" data-skill="66"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-heading">Soft skills &amp; tools</div>
+              <div class="card-sub">
+                Coding is not only about syntax. These skills help me work well in teams.
+              </div>
+              <div class="tag-list">
+                <div class="tag">Communication with teammates</div>
+                <div class="tag">Presentation &amp; explaining ideas</div>
+                <div class="tag">Time management for assignments</div>
+                <div class="tag">Basic documentation writing</div>
+                <div class="tag">Collaborative coding on GitHub</div>
+                <div class="tag">Using VS Code effectively</div>
+                <div class="tag">Debugging step by step</div>
+                <div class="tag">Planning before coding</div>
+                <div class="tag">Adaptability to new tech</div>
+                <div class="tag">Logical &amp; analytical thinking</div>
+                <div class="tag">Peer learning &amp; mentoring juniors</div>
+                <div class="tag">Basic UI/UX understanding</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects / Highlights -->
+        <section id="projects">
+          <div class="section-header">
+            <div class="section-title">Projects</div>
+            <div class="section-kicker">
+              A few mini projects that helped me apply what I learned in class.
+            </div>
+            <div class="section-pill">Built while learning</div>
+          </div>
+          <div class="project-grid">
+            <div>
+              <div class="project-card">
+                <div class="project-title-row">
+                  <div class="project-title">Campus Companion Web App</div>
+                  <div class="project-tag">Full-Stack Mini Project</div>
+                </div>
+                <div class="project-desc">
+                  A simple campus helper portal that lets students check club events,
+                  submit feedback, and view important notices. Built as a mini project
+                  to practice front-end, basic backend, and database connection.
+                </div>
+                <div class="project-meta-row">
+                  <div class="project-meta-pill">HTML • CSS • JavaScript</div>
+                  <div class="project-meta-pill">PHP (Basics) • MySQL</div>
+                  <div class="project-meta-pill">Form handling &amp; validation</div>
+                  <div class="project-meta-pill">Responsive layout</div>
+                </div>
+              </div>
+              <div class="project-card">
+                <div class="project-title-row">
+                  <div class="project-title">Personal Portfolio Page</div>
+                  <div class="project-tag">Frontend Practice</div>
+                </div>
+                <div class="project-desc">
+                  A responsive portfolio webpage (like this one) designed to present my
+                  journey, skills, and contact details in a clean and modern layout
+                  using only HTML, CSS, and JavaScript in a single file.
+                </div>
+                <div class="project-meta-row">
+                  <div class="project-meta-pill">Single-page design</div>
+                  <div class="project-meta-pill">Smooth scrolling</div>
+                  <div class="project-meta-pill">Custom styling</div>
+                  <div class="project-meta-pill">No external libraries</div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-heading">Academic highlights</div>
+              <div class="card-sub">
+                Some milestones from my academic and extracurricular journey so far.
+              </div>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-marker-wrap">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-line"></div>
+                  </div>
+                  <div class="timeline-card">
+                    <div class="timeline-title">3rd Year CSE Student</div>
+                    <div class="timeline-meta">
+                      Malnad College of Engineering • Hassan • 2023-27
+                    </div>
+                    <div class="timeline-body">
+                      Completed core subjects such as Data Structures, Algorithms, OOP,
+                      Operating Systems, and DBMS, while building mini projects to
+                      connect theory with practice.
+                    </div>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-marker-wrap">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-line"></div>
+                  </div>
+                  <div class="timeline-card">
+                    <div class="timeline-title">Hackathon Participation</div>
+                    <div class="timeline-meta">
+                      College &amp; online hackathons • Team projects
+                    </div>
+                    <div class="timeline-body">
+                      Participated in multiple hackathons focused on problem statements
+                      like campus management and simple automation tools, improving my
+                      ability to work under time pressure and collaborate with a team.
+                    </div>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-marker-wrap">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-line"></div>
+                  </div>
+                  <div class="timeline-card">
+                    <div class="timeline-title">Coding Practice &amp; Online Platforms</div>
+                    <div class="timeline-meta">
+                      LeetCode • HackerRank • CodeChef (Beginner-level problems)
+                    </div>
+                    <div class="timeline-body">
+                      Solved beginner and easy-level problems to strengthen logical
+                      thinking and coding speed, along with understanding of arrays,
+                      strings, and basic data structures.
+                    </div>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-marker-wrap">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-line" style="background: transparent;"></div>
+                  </div>
+                  <div class="timeline-card">
+                    <div class="timeline-title">Tech Clubs &amp; Events</div>
+                    <div class="timeline-meta">
+                      College tech club meetups • Workshops &amp; seminars
+                    </div>
+                    <div class="timeline-body">
+                      Attended workshops on web development, Git, cloud basics, and
+                      career guidance, and participated in tech fests organized at the
+                      college level.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications">
+          <div class="section-header">
+            <div class="section-title">Certifications</div>
+            <div class="section-kicker">
+              Online courses and certificates that support my learning journey.
+            </div>
+            <div class="section-pill">Verified learning</div>
+          </div>
+          <div class="card">
+            <div class="card-heading">Courses &amp; badges</div>
+            <div class="card-sub">
+              I regularly take online courses to gain structured understanding of topics.
+            </div>
+            <div class="cert-grid">
+              <div class="cert-card">
+                <div class="cert-title">Programming with C &amp; C++</div>
+                <div class="cert-meta">
+                  Online Certification • Problem Solving &amp; Basics of OOP
+                </div>
+                <div class="cert-tag-row">
+                  <div class="cert-tag">Pointers &amp; Memory</div>
+                  <div class="cert-tag">Functions &amp; Recursion</div>
+                  <div class="cert-tag">Basic STL (C++)</div>
+                </div>
+              </div>
+              <div class="cert-card">
+                <div class="cert-title">Web Development Fundamentals</div>
+                <div class="cert-meta">
+                  HTML • CSS • JavaScript • Responsive Design
+                </div>
+                <div class="cert-tag-row">
+                  <div class="cert-tag">Flexbox &amp; Grid</div>
+                  <div class="cert-tag">DOM Manipulation</div>
+                  <div class="cert-tag">Basic UI Components</div>
+                </div>
+              </div>
+              <div class="cert-card">
+                <div class="cert-title">Database Management with MySQL</div>
+                <div class="cert-meta">
+                  Relational Databases • SQL Queries • Normalization
+                </div>
+                <div class="cert-tag-row">
+                  <div class="cert-tag">Joins &amp; Constraints</div>
+                  <div class="cert-tag">CRUD Operations</div>
+                  <div class="cert-tag">ER Diagrams</div>
+                </div>
+              </div>
+              <div class="cert-card">
+                <div class="cert-title">Git &amp; GitHub Basics</div>
+                <div class="cert-meta">
+                  Version Control • Collaboration • Branching
+                </div>
+                <div class="cert-tag-row">
+                  <div class="cert-tag">Commit &amp; Merge</div>
+                  <div class="cert-tag">Pull Requests</div>
+                  <div class="cert-tag">Project History</div>
+                </div>
+              </div>
+              <div class="cert-card">
+                <div class="cert-title">Problem Solving using C++</div>
+                <div class="cert-meta">
+                  Competitive Programming Starter Course
+                </div>
+                <div class="cert-tag-row">
+                  <div class="cert-tag">Patterns &amp; Loops</div>
+                  <div class="cert-tag">Arrays &amp; Strings</div>
+                  <div class="cert-tag">Basic Complexity</div>
+                </div>
+              </div>
+              <div class="cert-card">
+                <div class="cert-title">Soft Skills &amp; Communication</div>
+                <div class="cert-meta">
+                  Campus-to-Corporate Readiness • Presentation Skills
+                </div>
+                <div class="cert-tag-row">
+                  <div class="cert-tag">Teamwork</div>
+                  <div class="cert-tag">Email Etiquette</div>
+                  <div class="cert-tag">Public Speaking Basics</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+          <div class="section-header">
+            <div class="section-title">Contact</div>
+            <div class="section-kicker">
+              Feel free to reach out for internships, collaborations, or feedback.
+            </div>
+            <div class="section-pill">Let’s connect</div>
+          </div>
+          <div class="contact-grid">
+            <div class="card">
+              <div class="card-heading">Let’s work together</div>
+              <div class="card-sub">
+                I am open to internship opportunities, project collaborations, and
+                guidance from seniors or industry professionals.
+              </div>
+              <div class="contact-highlight">
+                <p>
+                  <strong>How I can contribute:</strong> I can quickly understand problem
+                  statements, research solutions, and implement them using web
+                  technologies, core CS fundamentals, and clean coding practices.
+                </p>
+                <p>
+                  <strong>What I am looking for:</strong> Opportunities where I can learn
+                  from experienced developers, work on real-world problems, and grow as a
+                  responsible and reliable engineer.
+                </p>
+                <div class="contact-pill-row">
+                  <div class="contact-pill">
+                    <span>📍</span> Hassan, Karnataka
+                  </div>
+                  <div class="contact-pill">
+                    <span>🕒</span> Available: Evenings &amp; Weekends
+                  </div>
+                  <div class="contact-pill">
+                    <span>💼</span> Open to remote &amp; on-site
+                  </div>
+                </div>
+                <div class="contact-meta-table">
+                  <div class="contact-row">
+                    <div class="contact-row-label">Primary Email</div>
+                    <div class="contact-row-value">
+                      karthik.k.cse<span>@</span>mail.com
+                    </div>
+                  </div>
+                  <div class="contact-row">
+                    <div class="contact-row-label">LinkedIn (placeholder)</div>
+                    <div class="contact-row-value">
+                      linkedin.com/in/karthik-k-cse
+                    </div>
+                  </div>
+                  <div class="contact-row">
+                    <div class="contact-row-label">GitHub (placeholder)</div>
+                    <div class="contact-row-value">
+                      github.com/karthik-k-codes
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-heading">Quick contact form</div>
+              <div class="card-sub">
+                This is a simple front-end form. You can integrate it with a backend or
+                email service later.
+              </div>
+              <form id="contactForm">
+                <div class="form-field">
+                  <label class="form-label">
+                    Name
+                    <span>Required</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your full name"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-label">
+                    Email
+                    <span>Required</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-label">
+                    Message
+                    <span>Required</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="Write a short message about the opportunity, project, or feedback."
+                    required
+                  ></textarea>
+                </div>
+                <div class="form-footer">
+                  <div class="form-status" id="formStatus"></div>
+                  <button class="btn-submit" type="submit">
+                    <span>Send Message</span> <span>➤</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          © <span id="year"></span> Karthik&nbsp;K • Portfolio. Built with HTML, CSS, and
+          JavaScript in a single file.
+        </div>
+        <div class="footer-badges">
+          <div class="footer-badge">Made in Hassan</div>
+          <div class="footer-badge">3rd Year CSE</div>
+          <div class="footer-badge">Always learning 🚀</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Smooth scroll helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    // Activate nav link on scroll
+    const sections = ["about", "skills", "projects", "certifications", "contact"];
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function updateActiveNav() {
+      let currentId = null;
+      const scrollPos = window.scrollY || window.pageYOffset;
+      const offsetMargin = 160;
+
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const top = rect.top + scrollPos - offsetMargin;
+          if (scrollPos >= top) {
+            currentId = id;
+          }
+        }
+      });
+
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === "#" + currentId) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveNav);
+    window.addEventListener("load", updateActiveNav);
+
+    // Animate skill bars
+    function animateSkillBars() {
+      const bars = document.querySelectorAll(".skill-bar-fill");
+      const triggerBottom = (window.innerHeight || 0) * 0.85;
+
+      bars.forEach((bar) => {
+        const rect = bar.getBoundingClientRect();
+        if (rect.top < triggerBottom && !bar.dataset.animated) {
+          const value = bar.getAttribute("data-skill") || "70";
+          bar.style.width = value + "%";
+          bar.dataset.animated = "true";
+        }
+      });
+    }
+
+    window.addEventListener("scroll", animateSkillBars);
+    window.addEventListener("load", animateSkillBars);
+
+    // Contact form (simple front-end validation and fake submit)
+    const form = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (!name || !email || !message) {
+          formStatus.textContent = "Please fill all the fields before submitting.";
+          formStatus.style.color = "#f97373";
+          return;
+        }
+
+        const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        if (!emailPattern.test(email)) {
+          formStatus.textContent = "Please enter a valid email address.";
+          formStatus.style.color = "#f97373";
+          return;
+        }
+
+        formStatus.textContent =
+          "Thank you, " +
+          name +
+          "! Your message is captured on the front end. You can now connect this form to a backend or email service.";
+        formStatus.style.color = "#4ade80";
+        form.reset();
+
+        setTimeout(() => {
+          formStatus.textContent = "";
+        }, 6000);
+      });
+    }
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+  </html>
